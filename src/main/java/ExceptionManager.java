@@ -6,6 +6,15 @@ public class ExceptionManager {
     public final List criticalExceptions = Arrays.asList(NullPointerException.class,NumberFormatException.class,IllegalArgumentException.class);
 
     private int critExcCount = 0;
+    private  int noCritExcCount = 0;
+
+    public int getNoCritExcCount() {
+        return noCritExcCount;
+    }
+
+    public void setNoCritExcCount(int noCritExcCount) {
+        this.noCritExcCount = noCritExcCount;
+    }
 
     public int getCritExcCount() {
         return critExcCount;
@@ -22,6 +31,8 @@ public class ExceptionManager {
     public void countCritExc(Exception e){
         if(isCritExc(e)){
             this.critExcCount++;
+        }else {
+            this.noCritExcCount++;
         }
     }
 }
