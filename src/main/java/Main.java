@@ -1,12 +1,23 @@
+import org.json.simple.JSONArray;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(Exception.class);
-//        ExceptionManager exceptionManager = new ExceptionManager();
-//        try{
-//            // some code with exception
-//        }catch (Exception e){
-//            exceptionManager.isCritExc(e);
-//        }
+        JSONArray CritExcList = new JSONArray();
+        CritExcList.add(NullPointerException.class);
+        CritExcList.add(NumberFormatException.class);
+        CritExcList.add(IllegalArgumentException.class);
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter("critExc.json")) {
+            file.write(CritExcList.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

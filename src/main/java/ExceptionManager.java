@@ -1,38 +1,9 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class ExceptionManager {
-    public final List criticalExceptions = Arrays.asList(NullPointerException.class,NumberFormatException.class,IllegalArgumentException.class);
+public interface ExceptionManager {
 
-    private int critExcCount = 0;
-    private  int noCritExcCount = 0;
+    boolean isCritExc(Exception e);
 
-    public int getNoCritExcCount() {
-        return noCritExcCount;
-    }
+    void countCritExc(Exception e);
 
-    public void setNoCritExcCount(int noCritExcCount) {
-        this.noCritExcCount = noCritExcCount;
-    }
-
-    public int getCritExcCount() {
-        return critExcCount;
-    }
-
-    public void setCritExcCount(int critExcCount) {
-        this.critExcCount = critExcCount;
-    }
-
-    public boolean isCritExc(Exception e){
-        return criticalExceptions.contains(e.getClass());
-    }
-
-    public void countCritExc(Exception e){
-        if(isCritExc(e)){
-            this.critExcCount++;
-        }else {
-            this.noCritExcCount++;
-        }
-    }
 }
